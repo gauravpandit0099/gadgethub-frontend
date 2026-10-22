@@ -1,0 +1,84 @@
+
+<aside class="fixed inset-y-0 left-0 z-40 hidden w-60 flex-col border-r border-white/[0.07] bg-[#0b1020] text-slate-300 lg:flex">
+  <a routerLink="/admin" class="flex h-[68px] shrink-0 items-center gap-3 border-b border-white/[0.07] px-5">
+    <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-cyan-400 text-white shadow-lg shadow-violet-500/25">
+      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M3 7h18l-2 13H5L3 7Z"/>
+        <path d="M8 9V6a4 4 0 0 1 8 0v3"/>
+      </svg>
+    </span>
+    <span>
+      <span class="block text-lg font-extrabold tracking-tight text-white">Gadget<span class="text-cyan-300">Hub</span></span>
+      <span class="text-[9px] font-semibold uppercase tracking-[0.22em] text-slate-500">Tech made simple</span>
+    </span>
+  </a>
+
+  <div class="px-4 pb-3 pt-7 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">
+    Main menu
+  </div>
+
+  <nav class="flex-1 space-y-1 overflow-y-auto px-3 pb-4">
+    @for (item of navigation; track item.path) {
+      <a
+        [routerLink]="item.path"
+        routerLinkActive="!border-violet-400/20 !bg-gradient-to-r !from-violet-600/25 !to-cyan-500/10 !text-white"
+        [routerLinkActiveOptions]="{ exact: item.path === '/admin' }"
+        class="group flex items-center gap-3 rounded-xl border border-transparent px-3 py-3 text-sm font-medium transition duration-300 hover:translate-x-1 hover:bg-white/[0.05] hover:text-white"
+      >
+        @switch (item.icon) {
+          @case ('grid') {
+            <svg class="h-5 w-5 shrink-0 text-slate-400 group-hover:text-violet-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+              <rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>
+            </svg>
+          }
+          @case ('box') {
+            <svg class="h-5 w-5 shrink-0 text-slate-400 group-hover:text-violet-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+              <path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 8 9 5 9-5M3 8v9l9 5 9-5V8M12 13v9"/>
+            </svg>
+          }
+          @case ('layers') {
+            <svg class="h-5 w-5 shrink-0 text-slate-400 group-hover:text-violet-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+              <path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/>
+            </svg>
+          }
+          @case ('cart') {
+            <svg class="h-5 w-5 shrink-0 text-slate-400 group-hover:text-cyan-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+              <path d="M3 3h2l2.5 12h11L21 7H6"/><circle cx="10" cy="19" r="1.5"/><circle cx="18" cy="19" r="1.5"/>
+            </svg>
+          }
+          @case ('users') {
+            <svg class="h-5 w-5 shrink-0 text-slate-400 group-hover:text-emerald-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+              <circle cx="9" cy="8" r="3.5"/><path d="M2.5 20v-2a6.5 6.5 0 0 1 13 0v2M16 5a3.5 3.5 0 0 1 0 6.8M18 14a5 5 0 0 1 3.5 4.8V20"/>
+            </svg>
+          }
+          @case ('package') {
+            <svg class="h-5 w-5 shrink-0 text-slate-400 group-hover:text-amber-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+              <path d="m12 3 9 5v8l-9 5-9-5V8l9-5Z"/><path d="m3 8 9 5 9-5M12 13v8M8 5l9 5"/>
+            </svg>
+          }
+          @case ('chart') {
+            <svg class="h-5 w-5 shrink-0 text-slate-400 group-hover:text-fuchsia-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+              <path d="M3 3v18h18"/><path d="m7 14 4-4 4 3 5-7"/>
+            </svg>
+          }
+        }
+
+        <span class="flex-1">{{ item.label }}</span>
+        <span class="h-1.5 w-1.5 rounded-full bg-cyan-400 opacity-0 shadow-[0_0_8px_#22d3ee] group-[.active]:opacity-100"></span>
+      </a>
+    }
+  </nav>
+
+  <div class="border-t border-white/[0.07] p-4">
+    <div class="flex items-center gap-3 rounded-xl bg-white/[0.04] p-3">
+      <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-fuchsia-500 to-violet-600 text-xs font-bold text-white shadow-lg shadow-violet-500/20">
+        GA
+      </div>
+      <div class="min-w-0 flex-1">
+        <p class="truncate text-xs font-semibold text-white">GadgetHub Admin</p>
+        <p class="mt-1 text-[10px] text-slate-500">Administrator</p>
+      </div>
+      <span class="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]"></span>
+    </div>
+  </div>
+</aside>
